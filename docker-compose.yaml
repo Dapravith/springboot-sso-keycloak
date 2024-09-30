@@ -1,0 +1,54 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: project_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - keycloak-network
+
+  pgadmin:
+    image: dpage/pgadmin4:7.7
+    container_name: pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - 5050:80
+    depends_on:
+      - postgres
+    networks:
+      - keycloak-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:25.0.6
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: postgres
+      KC_DB_URL_DATABASE: project_db
+    ports:
+      - 8081:8080
+    command:
+      - start-dev
+    depends_on:
+      - postgres
+    networks:
+      - keycloak-network
+
+volumes:
+  postgres_data:
+
+networks:
+  keycloak-network:
+    driver: bridge
