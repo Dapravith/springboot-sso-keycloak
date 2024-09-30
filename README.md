@@ -71,6 +71,6 @@ You can now build and run the Spring Boot application using Gradle.
 ./gradlew bootRun
 ```
 ## Step 7: Access the Application 🌐
-Access your Spring Boot application at http://localhost:8085. You will be redirected to Keycloak for authentication.
+Access your Spring Boot application at http://localhost:8090. You will be redirected to Keycloak for authentication.
 
 
