@@ -28,10 +28,12 @@ cd springboot-sso-keycloak
 ```
 
 # .env file
+```
 KEYCLOAK_USER=admin
 KEYCLOAK_PASSWORD=admin
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
+```
 
 ## Step 3: Run Docker Compose 🐳
 Now let's run Docker Compose to spin up the Keycloak and PostgreSQL services:
