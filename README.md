@@ -37,10 +37,10 @@ POSTGRES_PASSWORD=postgres
 
 ## Step 3: Run Docker Compose 🐳
 Now let's run Docker Compose to spin up the Keycloak and PostgreSQL services:
+```
 docker-compose up -d
-This will:
-
-Start Keycloak at http://localhost:8080.
+```
+This will start Keycloak at http://localhost:8080.
 Set up a PostgreSQL database (if applicable).
 
 ## Step 4: Import Keycloak Realm and Clients 🔐
